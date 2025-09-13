@@ -16,12 +16,28 @@
   </parent>
 
   <properties>
-    <java.version>17</java.version>
-    <otel.version>2.11.0</otel.version>
+    <otel.version>2.19.0</otel.version>
     <micrometer.version>1.14.0</micrometer.version>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <!-- Import OpenTelemetry BOM for consistent versions across dependencies -->
+      <dependency>
+        <groupId>io.opentelemetry.instrumentation</groupId>
+        <artifactId>opentelemetry-instrumentation-bom</artifactId>
+        <version>2.19.0</version> <!-- Use the latest stable version -->
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+
+
   <dependencies>
+
+
     <!-- Spring Boot basics -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -43,14 +59,13 @@
     <dependency>
       <groupId>io.opentelemetry.instrumentation</groupId>
       <artifactId>opentelemetry-spring-boot-starter</artifactId>
-      <version>${otel.version}</version>
     </dependency>
 
     <!-- Logback appender for OTel log export -->
     <dependency>
       <groupId>io.opentelemetry.instrumentation</groupId>
       <artifactId>opentelemetry-logback-appender-1.0</artifactId>
-      <version>${otel.version}</version>
+      <version>2.19.0-alpha</version>
     </dependency>
   </dependencies>
 

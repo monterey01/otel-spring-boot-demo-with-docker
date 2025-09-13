@@ -1,0 +1,66 @@
+# =========================
+# Java / Maven / Gradle
+# =========================
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Maven / Gradle
+target/
+build/
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code
+.vscode/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+.nb-gradle/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Spring Boot
+spring.log
+
+# OpenTelemetry / Observability
+*.hprof
+*.jfr
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Dependency directories
+node_modules/

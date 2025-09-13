@@ -1,35 +1,19 @@
 receivers:
   otlp:
     protocols:
-      grpc:
       http:
-
-processors:
-  batch:
-    timeout: 5s
-    send_batch_size: 1000
-
+        endpoint: "0.0.0.0:4318"
 exporters:
-  prometheus:
-    endpoint: "0.0.0.0:9464"
-  otlp/tempo:
-    endpoint: "tempo:4317"
-    tls:
-      insecure: true
-  loki:
-    endpoint: http://loki:3100/loki/api/v1/push
-
+  debug:
+    verbosity: detailed
 service:
   pipelines:
-    traces:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [otlp/tempo]
     metrics:
       receivers: [otlp]
-      processors: [batch]
-      exporters: [prometheus]
+      exporters: [debug]
+    traces:
+      receivers: [otlp]
+      exporters: [debug]
     logs:
       receivers: [otlp]
-      processors: [batch]
-      exporters: [loki]
+      exporters: [debug]
