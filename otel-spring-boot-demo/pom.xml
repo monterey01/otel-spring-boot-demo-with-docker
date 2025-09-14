@@ -20,21 +20,27 @@
     <micrometer.version>1.14.0</micrometer.version>
   </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <!-- Import OpenTelemetry BOM for consistent versions across dependencies -->
-      <dependency>
-        <groupId>io.opentelemetry.instrumentation</groupId>
-        <artifactId>opentelemetry-instrumentation-bom</artifactId>
-        <version>2.19.0</version> <!-- Use the latest stable version -->
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+
+      <dependencyManagement>
+          <dependencies>
+            <dependency>
+                <groupId>io.opentelemetry.instrumentation</groupId>
+                <artifactId>opentelemetry-instrumentation-bom</artifactId>
+                <version>2.19.0</version> <!-- Use the latest stable version -->
+                <type>pom</type>
+                <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
 
 
   <dependencies>
+
+    <dependency>
+      <groupId>com.example</groupId>
+      <artifactId>observability-starter</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
 
 
     <!-- Spring Boot basics -->
@@ -42,31 +48,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
 
-    <!-- Micrometer + OTLP exporter (Metrics) -->
-    <dependency>
-      <groupId>io.micrometer</groupId>
-      <artifactId>micrometer-registry-otlp</artifactId>
-      <version>${micrometer.version}</version>
-    </dependency>
-
-
-    <!-- OpenTelemetry for tracing -->
-    <dependency>
-      <groupId>io.opentelemetry.instrumentation</groupId>
-      <artifactId>opentelemetry-spring-boot-starter</artifactId>
-    </dependency>
-
-    <!-- Logback appender for OTel log export -->
-    <dependency>
-      <groupId>io.opentelemetry.instrumentation</groupId>
-      <artifactId>opentelemetry-logback-appender-1.0</artifactId>
-      <version>2.19.0-alpha</version>
-    </dependency>
   </dependencies>
 
   <build>
