@@ -34,7 +34,6 @@
   </dependencyManagement>
 
 
-
   <dependencies>
 
 
@@ -54,6 +53,7 @@
       <artifactId>micrometer-registry-otlp</artifactId>
       <version>${micrometer.version}</version>
     </dependency>
+
 
     <!-- OpenTelemetry for tracing -->
     <dependency>

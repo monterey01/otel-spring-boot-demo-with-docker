@@ -13,17 +13,29 @@ import io.micrometer.core.instrument.binder.system.UptimeMetrics;
 import org.springframework.context.annotation.Bean;
 import io.micrometer.core.instrument.binder.MeterBinder;
 import java.util.List;
+import java.net.InetAddress;
+import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 
 @SpringBootApplication
 public class DemoApplication {
 
 
-
     public static void main(String[] args) {
-
         SpringApplication.run(DemoApplication.class, args);
-
     }
+    @Bean
+     public MeterRegistryCustomizer<MeterRegistry> metricsCommonTags() {
+         String hostname;
+         try {
+             hostname = InetAddress.getLocalHost().getHostName();
+         } catch (Exception e) {
+             hostname = "unknown";
+         }
+         final String finalHostname = hostname;
+
+
+         return registry -> registry.config().commonTags("hostname", finalHostname);
+     }
 
   @Bean
   public List<MeterBinder> systemMetrics() {
