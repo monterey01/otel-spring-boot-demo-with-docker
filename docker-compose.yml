@@ -2,6 +2,7 @@ version: '3'
 services:
   collector:
     image: otel/opentelemetry-collector-contrib:latest
+    volumes:
       - ./otel-collector-config.yaml:/collector-config.yaml
     command: ["--config=/collector-config.yaml"]
     expose:
